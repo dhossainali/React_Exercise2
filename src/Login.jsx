@@ -13,10 +13,7 @@ export function Login({onLogin}) {
     const [data, setData] = useState(getData());
 
     function handleChange(event) {
-        const value = event.target.value;
-        const name = event.target.name;
-        const type = event.target.type;
-        const checked = event.target.checked;
+        const {value,name, type, checked}=event.target
         setData((d) => {
             return { ...d, [name]: type === 'checkbox' ? checked : value, }
         });
