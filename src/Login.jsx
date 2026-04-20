@@ -38,6 +38,7 @@ export function Login({onLogin}) {
             <input name="remember" type="checkbox" checked={data.remember} onChange={handleChange} />
             <button type="submit" disabled={!data.userName || !data.password}>Login</button>
             <button  type="button" onClick={handleReset}>Reset</button>
+            <pre>{JSON.stringify(data)}</pre>
             
         </form>
     )
