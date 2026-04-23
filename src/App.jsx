@@ -1,3 +1,4 @@
+import { Counter } from "./Counter"
 import { InteractiveWelcome } from "./InteractiveWelcome"
 import { Login } from "./Login"
 
@@ -11,6 +12,7 @@ function App() {
     <>
       <InteractiveWelcome/>
       <Login onLogin={onLogin}/>
+      <Counter initialValue={0} countNumber={2}/>
     </>
   )
 }
