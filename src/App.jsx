@@ -9,11 +9,11 @@ function App() {
     console.log(data)
   }
   return (
-    <>
+    <div className="appContainer">
       <InteractiveWelcome/>
       <Login onLogin={onLogin}/>
       <Counter initialValue={0} countNumber={2}/>
-    </>
+    </div>
   )
 }
 

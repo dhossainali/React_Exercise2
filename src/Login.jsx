@@ -1,4 +1,5 @@
 import { useState } from "react"
+import classes from './Login.module.css'
 
 function getData() {
     return(
@@ -33,10 +34,12 @@ export function Login({onLogin}) {
             <p>User Name:</p>
             <input name="userName" type="text" value={data.userName} onChange={handleChange} />
             <p>Passowrd:</p>
-            <input name="password" type="password" value={data.password} onChange={handleChange} />
+            <input 
+                 name="password" type="password" value={data.password} onChange={handleChange} />
             <p>Remember:</p>
             <input name="remember" type="checkbox" checked={data.remember} onChange={handleChange} />
-            <button type="submit" disabled={!data.userName || !data.password}>Login</button>
+            <button className={(data.password).length>=8? classes.greenOK: classes.redNotOK }
+            type="submit" disabled={!data.userName || !data.password}>Login</button>
             <button  type="button" onClick={handleReset}>Reset</button>
             <pre>{JSON.stringify(data)}</pre>
             

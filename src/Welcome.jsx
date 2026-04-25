@@ -1,6 +1,7 @@
+import './Welcome.css'
 export function Welcome({name}) {
     return (
-        <div>
+        <div className="wellcome">
             <p> Welcome, {name}!</p>
         </div>
     )
