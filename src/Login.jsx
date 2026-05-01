@@ -31,13 +31,13 @@ export function Login({onLogin}) {
 
     return (
         <form onSubmit={handleLogin}>
-            <p>User Name:</p>
-            <input name="userName" type="text" value={data.userName} onChange={handleChange} />
-            <p>Passowrd:</p>
-            <input 
+            <label htmlFor="idUserName"> User Name:</label> 
+            <input id='idUserName' name="userName" type="text" value={data.userName} onChange={handleChange} />
+            <label htmlFor="idPassword"> Passowrd:</label> 
+            <input id='idPassword' 
                  name="password" type="password" value={data.password} onChange={handleChange} />
-            <p>Remember:</p>
-            <input name="remember" type="checkbox" checked={data.remember} onChange={handleChange} />
+            <label htmlFor="idRemember"> Remember:</label> 
+            <input id='idRemember' name="remember" type="checkbox" checked={data.remember} onChange={handleChange} />
             <button className={(data.password).length>=8? classes.greenOK: classes.redNotOK }
             type="submit" disabled={!data.userName || !data.password}>Login</button>
             <button  type="button" onClick={handleReset}>Reset</button>
