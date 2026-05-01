@@ -1,7 +1,7 @@
 import { useState } from "react"
 import classes from './Login.module.css'
 
-function getData() {
+const initialFormData=()=> {
     return(
     {
         userName: '',
@@ -11,37 +11,38 @@ function getData() {
 }
 export function Login({onLogin}) {
 
-    const [data, setData] = useState(getData());
+    const [formData, setFormData] = useState(initialFormData());
 
     function handleChange(event) {
         const {value,name, type, checked}=event.target
-        setData((d) => {
+        setFormData((d) => {
             return { ...d, [name]: type === 'checkbox' ? checked : value, }
         });
 
     }
     function handleReset(){
-        setData(getData());
+        setFormData(initialFormData());
     }
 
     function handleLogin(event) {
         event.preventDefault()
-        onLogin(data)
+        onLogin(formData)
+        setFormData(initialFormData())
     }
 
     return (
         <form onSubmit={handleLogin}>
             <label htmlFor="idUserName"> User Name:</label> 
-            <input id='idUserName' name="userName" type="text" value={data.userName} onChange={handleChange} />
+            <input id='idUserName' name="userName" type="text" value={formData.userName} onChange={handleChange} />
             <label htmlFor="idPassword"> Passowrd:</label> 
             <input id='idPassword' 
-                 name="password" type="password" value={data.password} onChange={handleChange} />
+                 name="password" type="password" value={formData.password} onChange={handleChange} />
             <label htmlFor="idRemember"> Remember:</label> 
-            <input id='idRemember' name="remember" type="checkbox" checked={data.remember} onChange={handleChange} />
-            <button className={(data.password).length>=8? classes.greenOK: classes.redNotOK }
-            type="submit" disabled={!data.userName || !data.password}>Login</button>
+            <input id='idRemember' name="remember" type="checkbox" checked={formData.remember} onChange={handleChange} />
+            <button className={(formData.password).length>=8? classes.greenOK: classes.redNotOK }
+            type="submit" disabled={!formData.userName || !formData.password}>Login</button>
             <button  type="button" onClick={handleReset}>Reset</button>
-            <pre>{JSON.stringify(data)}</pre>
+            <pre>{JSON.stringify(formData)}</pre>
             
         </form>
     )
